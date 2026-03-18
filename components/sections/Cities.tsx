@@ -1,21 +1,3 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import { useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { ArrowRight } from 'lucide-react'
-
-const Cities = () => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   const cities = [
     {
       name: 'Miami',
@@ -29,7 +11,7 @@ const Cities = () => {
     },
     {
       name: 'New York',
-      description: 'The world's stage for global culture, commerce, and competition.',
+      description: "The world's stage for global culture, commerce, and competition.",
       image: '/images/cities/new-york.jpg'
     },
     {
@@ -42,31 +24,7 @@ const Cities = () => {
       description: 'A rising cultural capital fueled by music, sport, and community.',
       image: '/images/cities/atlanta.jpg'
     }
-  ]
-
-  return (
-    <section id="cities" ref={ref} className="relative py-32 lg:py-40 bg-ink">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7 }}
-          >
-            <p className="text-xs font-semibold tracking-[0.3em] text-gold uppercase mb-6">
-              Host Cities
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-chalk uppercase leading-tight mb-8">
-              The Cities
-            </h2>
-            <p className="text-xl md:text-2xl font-light text-warm-gray italic tracking-wide">
-              Every city tells a different story.
-            </p>
-          </motion.div>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {cities.map((city, index) => (
+  ]          {cities.map((city, index) => (
             <motion.div
               key={city.name}
               initial={{ opacity: 0, y: 30 }}
